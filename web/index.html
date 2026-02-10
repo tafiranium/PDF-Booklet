@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>PDF Booklet Creator</title>
+    <script type="text/javascript" src="/eel.js"></script>
+    <link rel="stylesheet" href="../assets/index.css">
+    <!-- В index.html в теге <head> -->
+    <link rel="icon" type="image/png" href="icon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1>📘 Создатель буклетов PDF</h1>
+            <div class="form-group">
+                <label for="input-file">Исходный PDF файл:</label>
+                <div class="file-input">
+                    <input type="text" id="input-file" placeholder="Выберите PDF файл..." readonly>
+                    <button class="browse-btn" onclick="openFileBrowser('input')">Обзор</button>
+                </div>
+            </div>
+          <div class="form-group">
+    <label for="output-file">Выходной файл:</label>
+        <div class="file-input">
+                    <input type="text" id="output-file" placeholder="booklet_output.pdf">
+                    <button class="browse-btn" onclick="openFileBrowser('output')">Обзор</button>
+                    <button class="open-folder-btn" onclick="openOutputFolder()" title="Открыть папку">
+                        📁
+                    </button>
+                </div>
+            </div>
+            <div class="settings-container">
+                <div class="settings-title">Настройки печати:</div>
+                 <div class="setting-option">
+                    <input type="checkbox" id="rotate-all" value="rotate-all">
+                    <label for="rotate-all">Поворот всего документа (Rotate)</label>
+                </div>
+                <div class="setting-option">
+                    <input type="checkbox" id="rotate" value="rotate">
+                    <label for="rotate">Поворот половины документа (Rotate)</label>
+                </div>
+                <div class="setting-option">
+                    <input type="checkbox" id="flip-horizontal" value="flip-horizontal">
+                    <label for="flip-horizontal">Отражение по горизонтали</label>
+                </div>
+                <div class="setting-option">
+                    <input type="checkbox" id="flip-vertical" value="flip-vertical">
+                    <label for="flip-vertical">Отражение по вертикали</label>
+                </div>
+            </div>
+            <button class="prepare-btn" id="prepare-btn" onclick="prepareBooklet()">
+                🛠️ ПОДГОТОВИТЬ БУКЛЕТ
+            </button>
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">Ожидание...</div>
+            </div>
+            <div class="status" id="status"></div>
+
+
+
+            <div class="info-text">
+                <div class="info-title">Как использовать:</div>
+                <div class="steps-container">
+                    <div class="step"><div class="step-icon">→</div><span class="step-text">Выберите PDF файл для обработки</span></div>
+                    <div class="step"><div class="step-icon">→</div><span class="step-text">Укажите имя выходного файла</span></div>
+                    <div class="step"><div class="step-icon">→</div><span class="step-text">Нажмите "ПОДГОТОВИТЬ БУКЛЕТ"</span></div>
+                    <div class="step"><div class="step-icon">→</div><span class="step-text">Просмотрите сгенерированные страницы в галерее</span></div>
+                    <div class="step"><div class="step-icon">→</div><span class="step-text">Распечатайте с двусторонней печатью</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="right-panel">
+    <div class="preview-container">
+        <div class="pdf-viewer" id="pdf-viewer">
+            <!-- Галерея изображений -->
+            <div class="gallery-container" id="gallery-container">
+                    <div class="gallery-header">
+                        <div class="gallery-title">Предпросмотр буклета</div>
+                        <div class="gallery-counter" id="gallery-counter">0/0</div>
+                    </div>
+
+                    <div class="gallery-content">
+                        <button class="gallery-nav-btn" id="gallery-prev" onclick="previousPage()" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+
+                        <div class="gallery-track" id="gallery-track">
+                            <div class="gallery-empty" id="no-preview">
+                                <div class="welcome-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Создайте ваш буклет</h3>
+                                <p>Выберите PDF файл и нажмите "ПОДГОТОВИТЬ"<br>для генерации превью буклета</p>
+                            </div>
+                        </div>
+
+                        <button class="gallery-nav-btn" id="gallery-next" onclick="nextPage()" disabled>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Старый iframe (оставляем скрытым) -->
+                <iframe id="pdf-frame" class="pdf-frame" style="display: none;"></iframe>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Модальное окно файлового браузера -->
+    <div class="modal-overlay" id="file-browser-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modal-title">Выбор файла</div>
+                <button class="close-btn" onclick="closeFileBrowser()">×</button>
+            </div>
+            <div class="path-display" id="current-path">/</div>
+            <div class="search-container">
+                <input type="text" class="search-input" id="search-input" placeholder="Поиск..." oninput="loadDirectoryWithFilters()">
+                <input type="checkbox" class="filter-checkbox" id="pdf-only" onchange="loadDirectoryWithFilters()">
+                <label for="pdf-only">Только PDF</label>
+            </div>
+            <div class="file-list" id="file-list"></div>
+            <div class="output-name-container" id="output-name-container">
+                <input type="text" class="output-name-input" id="output-name" placeholder="Введите имя файла (например, output.pdf)">
+                <button class="select-btn" onclick="confirmOutputSelection()">Выбрать</button>
+            </div>
+            <div class="modal-footer">
+                <button class="back-btn" onclick="goBack()">Назад</button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/index.js" defer></script>
+</body>
+</html>

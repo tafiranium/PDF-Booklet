@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Содержимое папки: /Users/tafiran/PyCharmMiscProject/static</title>
+    <style>
+        :root {
+            /* Основная цветовая палитра - темно-серые оттенки */
+            --color-bg-dark: #0f1117;
+            --color-bg-medium: #1a1d26;
+            --color-bg-light: #262a35;
+            --color-bg-card: #2d313d;
+
+            /* Акцентные цвета - желтые/золотые оттенки */
+            --color-accent-primary: #f0b90b;
+            --color-accent-secondary: #ffd166;
+            --color-accent-dark: #d4a017;
+            --color-accent-light: #f8e473;
+
+            /* Текст - контрастные, но гармоничные оттенки */
+            --color-text-primary: #e8e8e8;
+            --color-text-secondary: #b0b0b0;
+            --color-text-light: #ffffff;
+            --color-text-muted: #8a8a8a;
+
+            /* Функциональные цвета */
+            --color-success: #2ecc71;
+            --color-error: #e74c3c;
+            --color-warning: #e67e22;
+            --color-info: #3498db;
+
+            /* Состояния кнопок */
+            --color-btn-primary: #f0b90b;
+            --color-btn-primary-hover: #d4a017;
+            --color-btn-primary-active: #b38c12;
+
+            --color-btn-secondary: #2d313d;
+            --color-btn-secondary-hover: #3a3f4d;
+            --color-btn-secondary-active: #262a35;
+
+            --color-btn-success: #27ae60;
+            --color-btn-disabled: #4a4f5c;
+
+            /* Градиенты и тени */
+            --shadow-card: 0 4px 20px rgba(15, 17, 23, 0.6);
+            --shadow-btn: 0 4px 12px rgba(240, 185, 11, 0.3);
+            --gradient-accent: linear-gradient(135deg, #f0b90b 0%, #ffd166 100%);
+
+            /* Радиусы */
+            --radius-sm: 8px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --radius-xl: 16px;
+
+            /* Отступы */
+            --spacing-xs: 5px;
+            --spacing-sm: 10px;
+            --spacing-md: 15px;
+            --spacing-lg: 20px;
+            --spacing-xl: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: var(--color-bg-dark);
+            color: var(--color-text-primary);
+            min-height: 100vh;
+            padding: var(--spacing-lg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, var(--color-bg-card) 0%, var(--color-bg-light) 100%);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header {
+            background: var(--gradient-accent);
+            color: var(--color-text-light);
+            padding: var(--spacing-xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: var(--spacing-md);
+            font-weight: 700;
+            position: relative;
+            text-shadow: var(--shadow-btn);
+        }
+
+        .header h1 i {
+            margin-right: var(--spacing-md);
+            color: var(--color-accent-light);
+        }
+
+        .path {
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-sm);
+            display: inline-block;
+            word-break: break-all;
+            font-size: 14px;
+            color: var(--color-text-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls {
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: 2px solid var(--color-bg-card);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: var(--color-bg-card);
+            color: var(--color-text-primary);
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--color-accent-primary);
+            box-shadow: 0 0 0 2px rgba(240, 185, 11, 0.2);
+        }
+
+        .search-box::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        .filter-btn {
+            background: var(--gradient-accent);
+            color: var(--color-bg-dark);
+            border: none;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            box-shadow: var(--shadow-btn);
+            min-height: 48px;
+        }
+
+        .filter-btn:hover {
+            background: linear-gradient(135deg, var(--color-btn-primary-hover) 0%, var(--color-accent-secondary) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(240, 185, 11, 0.5);
+        }
+
+        .filter-btn i {
+            font-size: 18px;
+        }
+
+        .content {
+            padding: var(--spacing-xl);
+        }
+
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .item {
+            background: linear-gradient(145deg, var(--color-bg-card), rgba(255, 255, 255, 0.05));
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg) var(--spacing-md);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(240, 185, 11, 0.15);
+            border-color: var(--color-accent-primary);
+        }
+
+        .item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .item.folder {
+            background: linear-gradient(135deg,
+                rgba(240, 185, 11, 0.1),
+                rgba(240, 185, 11, 0.05));
+            border: 2px solid rgba(240, 185, 11, 0.2);
+        }
+
+        .item.file {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 255, 255, 0.02));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .item.file.pdf {
+            background: linear-gradient(135deg,
+                rgba(240, 185, 11, 0.15),
+                rgba(240, 185, 11, 0.05));
+            border: 2px solid rgba(240, 185, 11, 0.3);
+        }
+
+        .item-icon {
+            font-size: 48px;
+            margin-bottom: var(--spacing-md);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent-primary);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .item:hover .item-icon {
+            transform: scale(1.1);
+            color: var(--color-accent-secondary);
+        }
+
+        .item-icon i {
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+        }
+
+        .item-name {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            word-break: break-word;
+            font-size: 15px;
+            color: var(--color-text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .item:hover .item-name {
+            color: var(--color-accent-light);
+        }
+
+        .item-size {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            background: linear-gradient(145deg, var(--color-bg-card) 0%, var(--color-bg-light) 100%);
+            color: var(--color-text-primary);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            margin-top: var(--spacing-lg);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(240, 185, 11, 0.3);
+            font-weight: 600;
+            box-shadow: var(--shadow-btn);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(145deg, var(--color-bg-light) 0%, var(--color-bg-card) 100%);
+            transform: translateX(-4px);
+            box-shadow: 0 8px 20px rgba(240, 185, 11, 0.3);
+            border-color: var(--color-accent-primary);
+            color: var(--color-accent-light);
+        }
+
+        .back-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover i {
+            transform: translateX(-5px);
+        }
+
+        .stats {
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-lg);
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats strong {
+            color: var(--color-accent-primary);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: var(--spacing-lg);
+            color: var(--color-text-muted);
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        /* Анимация элементов при появлении */
+        .item {
+            animation: itemAppear 0.5s ease-out forwards;
+            animation-delay: calc(var(--item-index) * 0.05s);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes itemAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Стили для скроллбара */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg-card);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-accent-primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-accent-secondary);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .item-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: var(--spacing-sm);
+                border-radius: var(--radius-lg);
+            }
+
+            .item-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: var(--spacing-sm);
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .header {
+                padding: var(--spacing-lg);
+            }
+
+            .content, .controls {
+                padding: var(--spacing-lg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .item-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .filter-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+                text-align: center;
+            }
+
+            body {
+                padding: var(--spacing-sm);
+            }
+        }
+
+        /* Специальные иконки для типов файлов */
+        .item.file .fa-file-pdf {
+            color: var(--color-accent-primary);
+        }
+
+        .item.file .fa-file-code {
+            color: var(--color-info);
+        }
+
+        .item.file .fa-file-image {
+            color: var(--color-success);
+        }
+
+        .item.file .fa-file-word {
+            color: #2b579a;
+        }
+
+        .item.file .fa-file-excel {
+            color: #217346;
+        }
+
+        .item.folder .fa-folder {
+            color: var(--color-accent-primary);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-folder"></i> Содержимое папки</h1>
+            <div class="path">/Users/tafiran/PyCharmMiscProject/static</div>
+        </div>
+
+        <div class="controls">
+            <input type="text" class="search-box" id="searchInput" placeholder="Поиск файлов и папок...">
+            <button class="filter-btn" id="filterBtn">
+                <i class="fas fa-filter"></i> Фильтр
+            </button>
+        </div>
+
+        <div class="content">
+            <div class="item-grid" id="itemGrid">
+
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/book.py" class="item file" title="book.py">
+                    <div class="item-icon"><i class="fas fa-file-code"></i></div>
+                    <div class="item-name">book.py</div>
+                    <div class="item-size">6.7 КБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/end-1.pdf" class="item file" title="end-1.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">end-1.pdf</div>
+                    <div class="item-size">683.5 КБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/end.pdf" class="item file" title="end.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">end.pdf</div>
+                    <div class="item-size">683.7 КБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/enыыыd.pdf" class="item file" title="enыыыd.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">enыыыd.pdf</div>
+                    <div class="item-size">683.7 КБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/target.pdf" class="item file" title="target.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">target.pdf</div>
+                    <div class="item-size">5.2 МБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/target_booklet.pdf" class="item file" title="target_booklet.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">target_booklet.pdf</div>
+                    <div class="item-size">48.3 МБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/test.pdf" class="item file" title="test.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">test.pdf</div>
+                    <div class="item-size">4.3 КБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/test.py" class="item file" title="test.py">
+                    <div class="item-icon"><i class="fas fa-file-code"></i></div>
+                    <div class="item-name">test.py</div>
+                    <div class="item-size">4.6 КБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/test2.py" class="item file" title="test2.py">
+                    <div class="item-icon"><i class="fas fa-file-code"></i></div>
+                    <div class="item-name">test2.py</div>
+                    <div class="item-size">2.9 КБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/test_booklet.pdf" class="item file" title="test_booklet.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">test_booklet.pdf</div>
+                    <div class="item-size">686.5 КБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/Инженерная графика.pdf" class="item file" title="Инженерная графика.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">Инженерная графика.pdf</div>
+                    <div class="item-size">9.1 МБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/Инженерная графика_booklet.pdf" class="item file" title="Инженерная графика_booklet.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">Инженерная графика_booklet.pdf</div>
+                    <div class="item-size">40.0 МБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/Химия 2017.pdf" class="item file" title="Химия 2017.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">Химия 2017.pdf</div>
+                    <div class="item-size">5.2 МБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/Химия 2017_booklet.pdf" class="item file" title="Химия 2017_booklet.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">Химия 2017_booklet.pdf</div>
+                    <div class="item-size">48.4 МБ</div>
+                </a>
+                <a href="file:///Users/tafiran/PyCharmMiscProject/static/Химия растворы.pdf" class="item file" title="Химия растворы.pdf">
+                    <div class="item-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="item-name">Химия растворы.pdf</div>
+                    <div class="item-size">4.3 МБ</div>
+                </a>
+            </div>
+
+            <div class="stats">
+                <div>Всего элементов: <strong>15</strong></div>
+                <div>Папок: <strong>0</strong></div>
+                <div>Файлов: <strong>15</strong></div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script>
+        // Функция поиска
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.item');
+
+            items.forEach(item => {
+                const name = item.querySelector('.item-name').textContent.toLowerCase();
+                if (name.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Функция фильтрации
+        document.getElementById('filterBtn').addEventListener('click', function() {
+            const items = document.querySelectorAll('.item');
+            const hasHidden = Array.from(items).some(item => item.style.display === 'none');
+
+            // Если есть скрытые элементы - показываем все
+            if (hasHidden) {
+                items.forEach(item => item.style.display = 'block');
+                this.innerHTML = '<i class="fas fa-filter"></i> Фильтр';
+            } else {
+                // Иначе скрываем папки или файлы (переключаем)
+                const firstItem = items[0];
+                const isFolder = firstItem ? firstItem.classList.contains('folder') : false;
+
+                items.forEach(item => {
+                    if (isFolder && item.classList.contains('file')) {
+                        item.style.display = 'block';
+                    } else if (!isFolder && item.classList.contains('folder')) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                this.innerHTML = isFolder 
+                    ? '<i class="fas fa-folder"></i> Только папки' 
+                    : '<i class="fas fa-file"></i> Только файлы';
+            }
+        });
+
+        // Анимация при наведении
+        document.querySelectorAll('.item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
